@@ -5,19 +5,33 @@ export type BrazilianState =
 
 export type TaxRegime = "cumulativo" | "nao-cumulativo";
 
+export interface IcmsTaxRuleMetadata {
+  operationType: "internal";
+  validFrom: string;
+  sourceName: string;
+  sourceUrl: string;
+}
+
 export interface IcmsCalculationResult {
-  value: number;
-  originState: BrazilianState;
-  destinationState: BrazilianState;
-  aliqOrigin: number;
-  aliqDest: number;
-  icmsAmount: number;
+  productValue: string;
+  state: BrazilianState;
+  icmsRate: string;
+  icmsAmount: string;
+  total: string;
+  taxRule: IcmsTaxRuleMetadata;
 }
 
 export interface IpiCalculationResult {
-  value: number;
-  rate: number;
-  ipiAmount: number;
+  ncm: string;
+  productDescription: string;
+  productValue: string;
+  freightValue: string;
+  additionalExpenses: string;
+  calculationBasis: string;
+  ipiRate: string;
+  ipiAmount: string;
+  total: string;
+  legalSource: string;
 }
 
 export interface PisCofinsCalculationResult {
