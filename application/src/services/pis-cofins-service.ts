@@ -1,7 +1,5 @@
-import axios from "axios";
+import apiClient from "./api-client";
 import { PisCofinsFormData } from "../schemas/pis-cofins-schema";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3333";
 
 export interface PisCofinsResponse {
   productValue: string;
@@ -15,7 +13,7 @@ export interface PisCofinsResponse {
 
 export const pisCofinsService = {
   async calculate(data: PisCofinsFormData): Promise<PisCofinsResponse> {
-    const response = await axios.post<PisCofinsResponse>(`${API_URL}/pis-cofins`, data);
+    const response = await apiClient.post<PisCofinsResponse>("/pis-cofins", data);
     return response.data;
   },
 };
