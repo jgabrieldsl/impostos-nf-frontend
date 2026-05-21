@@ -1,9 +1,8 @@
-import apiClient from "./api-client";
+import { IpiFormData } from "../schemas/ipi-schema";
 
 export const ipiService = {
-  
-  async calculate(data: any): Promise<any> {
-
+  async calculate(data: IpiFormData): Promise<unknown> {
     return Promise.resolve({ placeholder: "IPI calculado", data });
   }
 };
+

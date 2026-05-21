@@ -10,7 +10,8 @@ export function useIpi() {
   return {
     loading: mutation.isPending,
     result: mutation.data,
-    error: mutation.error ? (mutation.error as any).message || "Erro ao calcular o IPI" : null,
+    error: mutation.error ? (mutation.error as Error).message || "Erro ao calcular o IPI" : null,
     calculateIpi: mutation.mutateAsync,
   };
 }
+
