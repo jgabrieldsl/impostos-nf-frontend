@@ -90,11 +90,7 @@ export default function IcmsPage() {
       return;
     }
 
-    try {
-      await calculateIcms(validation.data);
-    } catch {
-      // The hook exposes the user-facing message in `error`.
-    }
+    await calculateIcms(validation.data);
   };
 
   const applyPreset = async (preset: { productValue: string; state: string }) => {

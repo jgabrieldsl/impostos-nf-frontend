@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
-import { pisCofinsService } from "../services/pis-cofins-service";
+import { pisCofinsService, PisCofinsResponse } from "../services/pis-cofins-service";
 import { PisCofinsFormData } from "../schemas/pis-cofins-schema";
 
 export function usePisCofins() {
-  const mutation = useMutation({
+  const mutation = useMutation<PisCofinsResponse, Error, PisCofinsFormData>({
     mutationFn: (data: PisCofinsFormData) => pisCofinsService.calculate(data),
   });
 
@@ -14,4 +14,3 @@ export function usePisCofins() {
     calculatePisCofins: mutation.mutateAsync,
   };
 }
-

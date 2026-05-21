@@ -37,7 +37,6 @@ const ESTADOS_BRASILEIROS = [
 export default function NfCompletaPage() {
   const { loading, result, error, calculateNf } = useNf();
 
-  // Form states
   const [productValue, setProductValue] = useState<string>("1000.00");
   const [state, setState] = useState<string>("SP");
   const [ncm, setNcm] = useState<string>("2201.10.00");
@@ -46,13 +45,11 @@ export default function NfCompletaPage() {
   const [pisRate, setPisRate] = useState<string>("");
   const [confinsRate, setConfinsRate] = useState<string>("");
 
-  // UI state toggles
   const [showAdvanced, setShowAdvanced] = useState<boolean>(true);
   const [showCustomRates, setShowCustomRates] = useState<boolean>(false);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [activeTab, setActiveTab] = useState<"overview" | "icms" | "ipi" | "pisCofins">("overview");
 
-  // NCM auto-formatter
   const handleNcmChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let val = e.target.value.replace(/\D/g, "");
     if (val.length > 8) val = val.substring(0, 8);
@@ -70,14 +67,12 @@ export default function NfCompletaPage() {
     setNcm(formatted);
   };
 
-  // Helper to format currency
   const formatBRL = (val: string | number) => {
     const num = typeof val === "string" ? parseFloat(val) : val;
     if (isNaN(num)) return "R$ 0,00";
     return num.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
   };
 
-  // Quick Preset Handlers
   const applyPreset = async (preset: {
     productValue: string;
     state: string;
@@ -98,7 +93,6 @@ export default function NfCompletaPage() {
     setShowCustomRates(preset.customRatesActive);
     setFormErrors({});
 
-    // Submit right after pre-filling
     const rawData = {
       productValue: parseFloat(preset.productValue),
       state: preset.state,
@@ -202,7 +196,6 @@ export default function NfCompletaPage() {
     }
   };
 
-  // Calculando taxas proporcionais para o gráfico de barras
   const getProportions = () => {
     if (!result) return null;
     const prodVal = parseFloat(result.productValue) || 0;
