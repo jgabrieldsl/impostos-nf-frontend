@@ -97,11 +97,7 @@ export default function IpiPage() {
       return;
     }
 
-    try {
-      await calculateIpi(validation.data);
-    } catch {
-      // The hook exposes the user-facing message in `error`.
-    }
+    await calculateIpi(validation.data);
   };
 
   const applyPreset = async (preset: {
