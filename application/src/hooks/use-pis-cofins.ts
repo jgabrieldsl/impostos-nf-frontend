@@ -10,7 +10,8 @@ export function usePisCofins() {
   return {
     loading: mutation.isPending,
     result: mutation.data,
-    error: mutation.error ? (mutation.error as any).message || "Erro ao calcular o PIS/COFINS" : null,
+    error: mutation.error ? (mutation.error as Error).message || "Erro ao calcular o PIS/COFINS" : null,
     calculatePisCofins: mutation.mutateAsync,
   };
 }
+
