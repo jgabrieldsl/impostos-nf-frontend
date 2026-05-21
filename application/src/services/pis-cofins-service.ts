@@ -13,7 +13,12 @@ export interface PisCofinsResponse {
 
 export const pisCofinsService = {
   async calculate(data: PisCofinsFormData): Promise<PisCofinsResponse> {
-    const response = await apiClient.post<PisCofinsResponse>("/pis-cofins", data);
+    const payload = {
+      productValue: Number(data.productValue),
+      pisRate: Number(data.pisRate),
+      confinsRate: Number(data.confinsRate),
+    };
+    const response = await apiClient.post<PisCofinsResponse>("/impostos/pis-cofins", payload);
     return response.data;
   },
 };
