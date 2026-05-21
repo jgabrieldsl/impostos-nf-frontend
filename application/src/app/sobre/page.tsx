@@ -18,7 +18,7 @@ interface TeamMember {
 const TEAM_MEMBERS: TeamMember[] = [
   {
     name: 'João Gabriel (JG)',
-    role: 'Front-end & DevOps Lead',
+    role: 'Front-end, Backend & DevOps Lead',
     avatarSrc: '/avatars/jg_img.jpg',
     accentColor: 'emerald',
     badgeBg: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/25',
@@ -41,7 +41,7 @@ const TEAM_MEMBERS: TeamMember[] = [
   },
   {
     name: 'Pedro Daou (PD)',
-    role: 'Front-end & Backend',
+    role: 'Front-end, Backend & Documentação',
     avatarSrc: '/avatars/pd_img.jpg',
     accentColor: 'teal',
     badgeBg: 'bg-teal-500/15 text-teal-300 border-teal-500/25',
@@ -64,7 +64,7 @@ const TEAM_MEMBERS: TeamMember[] = [
   },
   {
     name: 'Gabriel Bonatto',
-    role: 'Front-end & Documentação',
+    role: 'Front-end, Backend & Documentação',
     avatarSrc: '/avatars/gb_img.jpg',
     accentColor: 'lime',
     badgeBg: 'bg-lime-500/15 text-lime-300 border-lime-500/25',
@@ -118,7 +118,7 @@ const TECH_STACK = [
       </svg>
     ),
     color: 'text-lime-400',
-    items: ['Git & GitHub', 'GitHub Actions', 'AWS Amplify', 'pnpm'],
+    items: ['Git & GitHub', 'GitHub Actions', 'AWS Amplify', 'pnpm', 'ECR', 'ECS', 'Load Balancer', 'Cloudfront'],
   },
 ];
 
