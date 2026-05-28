@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: "https://gceic26.onrender.com/equipe-18",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",

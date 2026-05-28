@@ -3,12 +3,18 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAuth } from "../../providers/auth-provider";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { logout } = useAuth();
+
+  if (pathname === "/") {
+    return null;
+  }
 
   const navItems = [
-    { href: "/", label: "Dashboard" },
+    { href: "/home", label: "Dashboard" },
     { href: "/nf-completa", label: "NF Completa" },
     { href: "/icms", label: "ICMS" },
     { href: "/ipi", label: "IPI" },
@@ -20,7 +26,7 @@ export default function Navbar() {
   return (
     <nav className="bg-green-950 text-green-100 py-4 px-6 shadow-lg border-b border-green-900/50">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2.5 group">
+        <Link href="/home" className="flex items-center gap-2.5 group">
           {/* Logo icon */}
           <div className="w-9 h-9 bg-green-500 rounded-lg flex items-center justify-center shadow-md shadow-green-500/20 group-hover:scale-105 transition-transform">
             <svg className="w-5 h-5 text-green-950" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -52,6 +58,17 @@ export default function Navbar() {
               </li>
             );
           })}
+          <li>
+            <button
+              onClick={logout}
+              className="ml-2 px-3 py-1.5 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white border border-red-500/25 transition-all duration-200 font-bold flex items-center gap-1 cursor-pointer"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+              Sair
+            </button>
+          </li>
         </ul>
       </div>
     </nav>
